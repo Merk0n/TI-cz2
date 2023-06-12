@@ -18,8 +18,6 @@ if (isset($_POST['remove'])){
       }
   }
 }
-
-
 ?>
 
 <!doctype html>
@@ -50,7 +48,7 @@ if (isset($_POST['remove'])){
     <div class="row px-5">
         <div class="col-md-7">
             <div class="shopping-cart">
-                <h4 class="mt-3">Cart</h6>
+                <h4 class="mt-3">Your shopping cart</h6>
                 <hr>
 
                 <?php
@@ -81,8 +79,7 @@ if (isset($_POST['remove'])){
             <div class="pt-4">
                 <h6>PRICE DETAILS</h6>
                 <hr>
-                <div class="row price-details">
-                    <div class="col-md-6">
+                    <div class="md-6">
                         <?php
                             if (isset($_SESSION['cart'])){
                                 $count  = count($_SESSION['cart']);
@@ -92,9 +89,7 @@ if (isset($_POST['remove'])){
                             }
                         ?>
                         <hr>
-                    </div>
-                    <div class="col-md-6">
-                        <h6 class="text-success">Total price: $<?php echo $total; ?></h6>
+                        <h6 class="text-success align">Total price: $<?php echo $total; ?></h6>
                         <hr>
 
                         <?php
@@ -124,9 +119,7 @@ if (isset($_POST['remove'])){
                         }
                         ?>
                     </div>
-                </div>
             </div>
-
         </div>
     </div>
 </div>

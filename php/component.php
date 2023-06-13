@@ -43,6 +43,15 @@ function cartElement($productname, $productauthor, $productprice, $productid){
     echo  $element;
 }
 
+function getData($conn){
+    $sql = "SELECT * FROM bookstoreTB";
+
+    $result = mysqli_query($conn, $sql);
+
+    if(mysqli_num_rows($result) > 0){
+        return $result;
+    }
+}
 
 
 

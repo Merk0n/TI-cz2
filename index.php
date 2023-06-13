@@ -1,13 +1,17 @@
 <?php
 
 session_start();
-
-require_once ('php/CreateDB.php');
 require_once ('php/component.php');
 
-
-// create instance of Createdb class
-$database = new CreateDB("bookstoreDB", "bookstoreTB");
+$conn = mysqli_connect("localhost","root","","bookstoreDB");
+if(!$conn)
+{
+    die("Connection Failed:".mysqli_connect_error());
+}
+else
+{
+    echo "Connection successful to database";
+}
 
 if (isset($_POST['add'])){
     if(isset($_SESSION['cart'])){
@@ -69,7 +73,7 @@ if (isset($_POST['add'])){
 <div class="container">
         <div class="row text-center py-5">
             <?php
-                $result = $database->getData();
+                $result = getData($conn);
                 while ($row = mysqli_fetch_assoc($result)){
                     component($row['product_name'], $row['product_author'], $row['product_price'], $row['id']);
                 }

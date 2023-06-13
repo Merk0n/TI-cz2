@@ -1,11 +1,17 @@
 <?php
 
 session_start();
-
-require_once ("php/CreateDB.php");
 require_once ("php/component.php");
 
-$db = new CreateDb("bookstoreDB", "bookstoreTB");
+$db = mysqli_connect("localhost","root","","bookstoreDB");
+if(!$db)
+{
+    die("Connection Failed:".mysqli_connect_error());
+}
+else
+{
+    echo "Connection successful to database";
+}
 
 if (isset($_POST['remove'])){
   if ($_GET['action'] == 'remove'){
@@ -57,7 +63,7 @@ if (isset($_POST['remove'])){
                     if (isset($_SESSION['cart'])){
                         $product_id = array_column($_SESSION['cart'], 'product_id');
 
-                        $result = $db->getData();
+                        $result = getData($db);
                         while ($row = mysqli_fetch_assoc($result)){
                             foreach ($product_id as $id){
                                 if ($row['id'] == $id){
@@ -97,7 +103,7 @@ if (isset($_POST['remove'])){
                                 
                                 
                         ?>
-                        <form action="" method="POST">
+                        <form action="purchase.php" method="POST">
                             <div class="mb-3">
                                 <label class="form-label">Name</label>
                                 <input type="text" name="name" class="form-control" required>

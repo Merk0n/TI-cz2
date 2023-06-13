@@ -10,7 +10,7 @@ if(!$db)
 }
 else
 {
-    echo "Connection successful to database";
+    //echo "Connection successful to database";
 }
 
 if (isset($_POST['remove'])){

@@ -9,8 +9,8 @@ if(!$conn)
 }
 else
 {
-    echo "Connection successful to database";
-    echo "<br>";
+    //echo "Connection successful to database";
+    //echo "<br>";
 }
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
